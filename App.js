@@ -19,10 +19,38 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
 import SpecificPage from "./screens/SpecificPage";
+import { MyDrawer } from "./components/Drawer";
 
 // SplashScreen.preventAutoHideAsync();
 
 const Stack = createNativeStackNavigator();
+
+function Root() {
+  return (
+    <Stack.Navigator initialRouteName="Signin">
+      <Stack.Screen
+        name="Signup"
+        component={SignupScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Signin"
+        component={SigninScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Details"
+        component={SpecificPage}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Root"
+        component={MyDrawer}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
   const queryClient = new QueryClient({
@@ -49,28 +77,7 @@ export default function App() {
             barStyle="light-content"
             backgroundColor={"transparent"}
           />
-          <Stack.Navigator initialRouteName="Signin">
-            <Stack.Screen
-              name="Signup"
-              component={SignupScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Signin"
-              component={SigninScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Home"
-              component={HomeScreen}
-              options={{ headerShown: false }}
-            />
-            <Stack.Screen
-              name="Details"
-              component={SpecificPage}
-              options={{ headerShown: false }}
-            />
-          </Stack.Navigator>
+          <Root />
         </NavigationContainer>
       </PersistQueryClientProvider>
     </GestureHandlerRootView>

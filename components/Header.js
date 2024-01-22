@@ -5,10 +5,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { StyledText } from "./StyledText";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
+import { useNavigation } from "@react-navigation/native";
+
 const Header = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.header}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.openDrawer()}>
         <MaterialCommunityIcons name="view-dashboard-outline" size={24} />
       </TouchableOpacity>
       <View style={styles.headerwin}>
