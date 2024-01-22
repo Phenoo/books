@@ -1,6 +1,7 @@
 import {
   Dimensions,
   Image,
+  Pressable,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -12,9 +13,13 @@ import Colors from "../constants/Colors";
 
 import { Ionicons } from "@expo/vector-icons";
 
+import { useNavigation } from "@react-navigation/native";
+
 const { width, height } = Dimensions.get("window");
 
 const Card = ({ item, textColor, backgroundColor, index }) => {
+  const navigation = useNavigation();
+
   return (
     <View
       style={{
@@ -33,7 +38,7 @@ const Card = ({ item, textColor, backgroundColor, index }) => {
               style={{
                 width: 100,
                 borderRadius: 15,
-                // padding: 2.5,
+                padding: 5,
                 backgroundColor: Colors.grey,
               }}
             >
@@ -42,7 +47,7 @@ const Card = ({ item, textColor, backgroundColor, index }) => {
                   textAlign: "center",
                   fontSize: 8,
                   color: "white",
-                  fontFamily: "regular",
+                  // fontFamily: "",
                 }}
               >
                 {category}
@@ -56,9 +61,13 @@ const Card = ({ item, textColor, backgroundColor, index }) => {
             backgroundColor: backgroundColor,
             padding: 10,
             borderRadius: 10,
+            minHeight: 100,
           }}
         >
-          <View style={{ position: "absolute", right: 10, bottom: 0 }}>
+          <Pressable
+            onPress={() => navigation.navigate("Details", { item })}
+            style={{ position: "absolute", right: 10, bottom: 0 }}
+          >
             <Image
               source={{
                 uri: item.volumeInfo.imageLinks
@@ -68,7 +77,7 @@ const Card = ({ item, textColor, backgroundColor, index }) => {
               style={{ width: 120, height: 200 }}
               resizeMode="contain"
             />
-          </View>
+          </Pressable>
 
           <View style={{ width: width * 0.5 }}>
             <StyledText
@@ -116,7 +125,7 @@ const Card = ({ item, textColor, backgroundColor, index }) => {
                         color: textColor,
                       }}
                     >
-                      {author}
+                      {author || "Anonymous"}
                     </StyledText>
                   ))}
               </View>

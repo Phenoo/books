@@ -2,16 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const fetchBooks = async (term) => {
-  const url = `https://www.googleapis.com/books/v1/volumes?q=subject:${term}&maxResults=40&orderBy=relevance`;
+  const url = `https://www.googleapis.com/books/v1//volumes/${term}?key=AIzaSyBB0PK-DfJRAhT9sKlxg8cG_gSywjTAhX0`;
   const response = await axios.get(url);
   return response.data;
 };
 
-const useBookSearch = (term) => {
+const useBookSearchSpecific = (term) => {
   return useQuery({
-    queryKey: ["books", term],
+    queryKey: ["booksSearch", term],
     queryFn: () => fetchBooks(term),
   });
 };
 
-export default useBookSearch;
+export default useBookSearchSpecific;

@@ -11,7 +11,7 @@ import Categories from "../components/Categories";
 import useBookSearch from "../api";
 
 const HomeScreen = () => {
-  const [category, setCategory] = useState("Today");
+  const [category, setCategory] = useState("Life");
 
   return (
     <View style={{ backgroundColor: Colors.green, flex: 1 }}>

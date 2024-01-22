@@ -5,20 +5,21 @@ const MyLoader = (props) => (
   <ContentLoader
     speed={2}
     width={400}
-    height={600}
-    viewBox="0 0 400 600"
+    height={800}
+    viewBox="0 0 400 800"
     backgroundColor="#f3f3f3"
-    foregroundColor="#ecebeb"
+    foregroundColor="#1BC354"
     {...props}
   >
-    <Circle cx="10" cy="20" r="8" />
-    <Rect x="25" y="15" rx="5" ry="5" width="220" height="100" />
-    <Circle cx="10" cy="50" r="8" />
-    <Rect x="25" y="45" rx="5" ry="5" width="220" height="100" />
-    <Circle cx="10" cy="80" r="8" />
-    <Rect x="25" y="75" rx="5" ry="5" width="220" height="100" />
-    <Circle cx="10" cy="110" r="8" />
-    <Rect x="25" y="105" rx="5" ry="5" width="220" height="100" />
+    <Rect x="25" y="15" rx="5" ry="5" width="300" height="100" />
+    <Rect x="25" y="45" rx="5" ry="5" width="300" height="100" />
+    <Rect x="25" y="15" rx="5" ry="5" width="300" height="100" />
+    <Rect x="25" y="45" rx="5" ry="5" width="300" height="100" />
+    <Rect x="25" y="15" rx="5" ry="5" width="300" height="100" />
+    <Rect x="25" y="45" rx="5" ry="5" width="300" height="100" />
+    <Rect x="25" y="75" rx="5" ry="5" width="300" height="100" />
+    <Rect x="25" y="75" rx="5" ry="5" width="300" height="100" />
+    <Rect x="25" y="75" rx="5" ry="5" width="300" height="200" />
   </ContentLoader>
 );
 

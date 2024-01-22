@@ -1,11 +1,4 @@
-import {
-  View,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  FlatList,
-  Image,
-} from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity, Image } from "react-native";
 import { useMemo, useRef, useState } from "react";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { Ionicons } from "@expo/vector-icons";
@@ -13,6 +6,10 @@ import { StyledText } from "./StyledText";
 import useBookSearch from "../api";
 import Card from "./Card";
 import MyLoader from "./Loader";
+
+import { FlashList } from "@shopify/flash-list";
+import Header from "./Header";
+
 // import Colors from "@/constants/Colors";
 
 // Bottom sheet that wraps our Listings component
@@ -36,12 +33,10 @@ const BottomSheetComponent = ({ category }) => {
     { background: "#FF8C00", text: "black" },
   ];
 
-  console.log(isLoading, "Loading category");
-
   return (
     <BottomSheet
       ref={bottomSheetRef}
-      index={1}
+      index={0}
       snapPoints={snapPoints}
       enablePanDownToClose={false}
       handleIndicatorStyle={{ backgroundColor: "#111" }}
@@ -53,9 +48,10 @@ const BottomSheetComponent = ({ category }) => {
             <MyLoader />
           </View>
         ) : (
-          <FlatList
+          <FlashList
             data={data.items}
-            keyExtractor={(item) => item.id}
+            estimatedItemSize={100}
+            showsVerticalScrollIndicator={false}
             renderItem={({ item, index }) => (
               <Card
                 item={item}
@@ -76,7 +72,7 @@ const BottomSheetComponent = ({ category }) => {
 const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
-    paddingBottom: 20,
+    paddingVertical: 10,
   },
   absoluteView: {
     position: "absolute",
@@ -105,7 +101,7 @@ const styles = StyleSheet.create({
       width: 1,
       height: 1,
     },
-    padding: 20,
+    paddingHorizontal: 20,
   },
 });
 

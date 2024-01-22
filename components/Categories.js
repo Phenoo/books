@@ -11,7 +11,7 @@ import Colors from "../constants/Colors";
 
 const Categories = ({ category, setCategory }) => {
   const items = [
-    "Today",
+    "Life",
     "Political",
     "Science",
     "Motivation",
@@ -29,9 +29,11 @@ const Categories = ({ category, setCategory }) => {
           >
             <StyledText
               style={{
-                fontFamily: "medium",
+                fontFamily: item === category ? "bold" : "medium",
                 fontSize: 16,
-                color: item === category ? "#111" : Colors.grey,
+                color: item === category ? "#fff" : "#292928",
+                // borderWidth: item === category ? 1 : 0,
+                // borderRadius: 10,
               }}
             >
               {item}

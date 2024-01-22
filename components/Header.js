@@ -3,12 +3,13 @@ import React from "react";
 
 import { Ionicons } from "@expo/vector-icons";
 import { StyledText } from "./StyledText";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Header = () => {
   return (
     <View style={styles.header}>
       <TouchableOpacity>
-        <Ionicons name="menu-sharp" size={24} />
+        <MaterialCommunityIcons name="view-dashboard-outline" size={24} />
       </TouchableOpacity>
       <View style={styles.headerwin}>
         <Ionicons name="star" />
